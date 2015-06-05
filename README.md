@@ -1,6 +1,8 @@
 Floodway
 ========
 
+[![Build Status](https://travis-ci.org/kvchen/floodway.svg?branch=master)](https://travis-ci.org/kvchen/floodway)
+
 ## Description
 
 **Floodway** is a general-purpose webapp intended to facilitate coordination between instructors, assistants, and a high volume of students.
