@@ -1,0 +1,19 @@
+//- index.jade
+doctype html
+
+html(lang="en")
+
+head
+	include ./includes/imports.jade
+
+body
+	main
+		h1 Office Hours
+
+		if user
+			p Hello, #{user.fullName}
+			img(src="#{user.avatar}", alt="profile picture")
+		else
+			include ./includes/signin.jade
+
+

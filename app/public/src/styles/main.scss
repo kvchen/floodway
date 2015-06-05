@@ -1,0 +1,11 @@
+// Global styles (resets, typography, colors, etc.)
+@import "base/reset";
+@import "base/typography";
+
+@import "layout/grid";
+@import "themes/theme";
+
+@import "utils/functions";
+@import "utils/helpers";
+@import "utils/mixins";
+@import "utils/variables";
