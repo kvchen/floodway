@@ -28,7 +28,7 @@ describe 'User models', ->
 			# Find the user we just saved
 			User.findById "12345"
 			.then (user) ->
-				expect(user).to.exist
+				expect(user.id).to.equal "12345"
 			.error (err) ->
 				throw err
 

@@ -22,7 +22,7 @@ models = require './models'
 env = nconf.get('NODE_ENV')
 if env is not 'test'
 	logger.debug "Connecting to Postgres"
-	sequelize.sync 
+	sequelize.sync
 	.then ->
 		logger.debug "All tables are initialized"
 	.error (err) ->

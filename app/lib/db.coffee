@@ -18,4 +18,6 @@ sequelize = new Sequelize database, config.username, config.password,
 	port: config.port
 	timezone: config.timezone
 
+	logging: logger.verbose
+
 module.exports = sequelize
