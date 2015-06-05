@@ -4,7 +4,9 @@ Sequelize = require 'sequelize'
 logger = require './logger'
 
 config = nconf.get 'database'
-if nconf.get('NODE_ENV') is "test"
+testEnv = nconf.get('NODE_ENV') is 'test'
+
+if testEnv
 	database = config.name.test
 else
 	database = config.name.prod

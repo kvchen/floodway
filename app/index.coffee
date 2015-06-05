@@ -16,9 +16,15 @@ routes = require './routes'
 
 # Initialize database
 sequelize = require './lib/db'
-models    = require './models'
+models = require './models'
 
-sequelize.sync
+# Clear the database if we're in a test environment
+testEnv = nconf.get('NODE_ENV') is 'test'
+if testEnv
+	logger.debug "Clearing all tables"
+
+sequelize.sync 
+	force: testEnv
 .then ->
 	logger.debug "Connected to Postgres and synchronized tables"
 .error (err) ->
