@@ -18,17 +18,15 @@ routes = require './routes'
 sequelize = require './lib/db'
 models = require './models'
 
-# Clear the database if we're in a test environment
-testEnv = nconf.get('NODE_ENV') is 'test'
-if testEnv
-	logger.debug "Clearing all tables"
-
-sequelize.sync 
-	force: testEnv
-.then ->
-	logger.debug "Connected to Postgres and synchronized tables"
-.error (err) ->
-	logger.error err
+# Synchronize the database if we're not in a test environment
+env = nconf.get('NODE_ENV')
+if env is not 'test'
+	logger.debug "Connecting to Postgres"
+	sequelize.sync 
+	.then ->
+		logger.debug "All tables are initialized"
+	.error (err) ->
+		logger.error err
 
 # Instantiate the Express app with default settings
 logger.debug "Starting webapp"
