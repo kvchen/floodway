@@ -14,22 +14,25 @@ error  = require './lib/error'
 logger = require './lib/logger'
 routes = require './routes'
 
+
 # Initialize database
 sequelize = require './lib/db'
 models = require './models'
 
+
 # Synchronize the database if we're not in a test environment
 env = nconf.get('NODE_ENV')
 if env is not 'test'
-	logger.debug "Connecting to Postgres"
+	logger.info "Connecting to Postgres"
 	sequelize.sync
 	.then ->
-		logger.debug "All tables are initialized"
+		logger.info "All tables are initialized"
 	.error (err) ->
 		logger.error err
 
+
 # Instantiate the Express app with default settings
-logger.debug "Starting webapp"
+logger.info "Starting webapp"
 app = express()
 
 

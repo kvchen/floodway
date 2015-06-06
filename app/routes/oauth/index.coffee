@@ -54,11 +54,11 @@ passport.deserializeUser (id, done) ->
 oAuthRouter = express.Router()
 
 
-oAuthRouter.get '/google', passport.authenticate 'google', 
+oAuthRouter.get '/', passport.authenticate 'google', 
 	scope: ['email', 'profile']
 
 
-oAuthRouter.get '/google/callback', passport.authenticate 'google', 
+oAuthRouter.get '/callback', passport.authenticate 'google', 
 	successRedirect: '/'
 	failureRedirect: '/'
 

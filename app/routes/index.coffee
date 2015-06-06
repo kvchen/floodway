@@ -10,7 +10,7 @@ router = express.Router()
 
 # Use other routers
 router.use '/', viewRouter
-router.use '/auth', oauthRouter
+router.use '/login', oauthRouter
 router.use '/api', apiRouter
 
 

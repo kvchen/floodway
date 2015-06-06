@@ -6,5 +6,3 @@ declare -a SECRETS=(
 
 tar cjf secrets.tar "${SECRETS[@]}"
 travis encrypt-file secrets.tar --add
-
-
