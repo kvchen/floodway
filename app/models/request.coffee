@@ -8,18 +8,18 @@ User       = require './user'
 
 
 Request = sequelize.define 'Requests',
-	details: Sequelize.TEXT
-	startedAt: Sequelize.DATE
-	completedAt: Sequelize.DATE
+  details: Sequelize.TEXT
+  startedAt: Sequelize.DATE
+  completedAt: Sequelize.DATE
 
-	rating:
-		type: Sequelize.ENUM
-		values: ['good', 'bad']
-	feedback: Sequelize.TEXT
-	state: 
-		type: Sequelize.ENUM
-		values: ['pending', 'active', 'completed', 'cancelled']
-		defaultValue: 'pending'
+  rating:
+    type: Sequelize.ENUM
+    values: ['good', 'bad']
+  feedback: Sequelize.TEXT
+  state:
+    type: Sequelize.ENUM
+    values: ['pending', 'active', 'completed', 'cancelled']
+    defaultValue: 'pending'
 
 
 # Establish relationships

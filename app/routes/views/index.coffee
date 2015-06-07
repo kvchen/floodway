@@ -3,8 +3,8 @@ viewRouter = express.Router()
 
 
 viewRouter.get '/', (req, res) ->
-	res.render 'index', 
-		user: req.user
+  res.render 'index',
+    user: req.user
 
 
 module.exports = viewRouter

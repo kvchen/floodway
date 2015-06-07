@@ -1,22 +1,20 @@
-$ ->
-
 
 
 removeFromQueue = ->
-	return
+  return
 
 addToQueue = ->
-	
-	return
+  
+  return
 
 readyNotification = ->
-	return if not Notification or Notification.permission == 'denied'
+  return if not Notification or Notification.permission == 'denied'
 
-	if Notification.permission != 'granted'
-		Notification.requestPermission()
+  if Notification.permission != 'granted'
+    Notification.requestPermission()
 
-	notification = new Notification 'Office Hours',
-		icon: null
-		body: "An assistant is on the way! Raise your hand to help them find you."
+  notification = new Notification 'Office Hours',
+    icon: null
+    body: "An assistant is on the way! Raise your hand to help them find you."
 
 

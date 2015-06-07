@@ -1,20 +1,10 @@
-express 	= require 'express'
-Joi 		= require 'joi'
+router = require('express').Router()
 
-user = require '../../models/user'
-
-
-apiRouter = express.Router()
+request = require '../request'
 
 
-apiRouter.post '/create', (req, res, next) ->
-	next()
+router.use '/requests', requestRouter
 
-
-apiRouter.post '/update/:id', (req, res, next) ->
-	next()
 
 
 module.exports = apiRouter
-
-

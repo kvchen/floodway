@@ -23,12 +23,12 @@ models = require './models'
 # Synchronize the database if we're not in a test environment
 env = nconf.get('NODE_ENV')
 if env is not 'test'
-	logger.info "Connecting to Postgres"
-	sequelize.sync
-	.then ->
-		logger.info "All tables are initialized"
-	.error (err) ->
-		logger.error err
+  logger.info "Connecting to Postgres"
+  sequelize.sync
+  .then ->
+    logger.info "All tables are initialized"
+  .error (err) ->
+    logger.error err
 
 
 # Instantiate the Express app with default settings
@@ -49,6 +49,9 @@ app.use express.static __dirname + "/public/build"
 
 
 # Set up middleware
+app.use bodyParser.urlencoded
+  extended: false
+app.use bodyParser.json()
 app.use cookieParser()
 app.use session nconf.get 'app:session'
 
