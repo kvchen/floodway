@@ -63,14 +63,16 @@ passport.deserializeUser (id, done) ->
 
 
 oAuthRouter = express.Router()
-oAuthRouter.get '/', passport.authenticate 'google', nconf.get('oauth').auth
+oAuthRouter.get '/login', passport.authenticate 'google',
+  nconf.get('oauth').auth
 
-oAuthRouter.get '/callback', passport.authenticate 'google',
+oAuthRouter.get '/login/callback', passport.authenticate 'google',
   successRedirect: '/'
   failureRedirect: '/'
 
-oAuthRouter.get '/check', auth.ensureAuthenticated, (req, res) ->
-  
+oAuthRouter.get '/logout', (req, res) ->
+  req.logout()
+  res.redirect '/'
 
 module.exports = oAuthRouter
 
