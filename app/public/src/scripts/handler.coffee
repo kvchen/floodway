@@ -15,6 +15,6 @@ readyNotification = ->
 
   notification = new Notification 'Office Hours',
     icon: null
-    body: "An assistant is on the way! Raise your hand to help them find you."
+    body: 'An assistant is on the way! Raise your hand to help them find you.'
 
 

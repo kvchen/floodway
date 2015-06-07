@@ -23,29 +23,29 @@ models = require './models'
 # Synchronize the database if we're not in a test environment
 env = nconf.get('NODE_ENV')
 if env is not 'test'
-  logger.info "Connecting to Postgres"
+  logger.info 'Connecting to Postgres'
   sequelize.sync
   .then ->
-    logger.info "All tables are initialized"
+    logger.info 'All tables are initialized'
   .error (err) ->
     logger.error err
 
 
 # Instantiate the Express app with default settings
-logger.info "Starting webapp"
+logger.info 'Starting webapp'
 app = express()
 
 
-app.set "port", process.env.PORT or nconf.get 'app:port'
-app.disable "x-powered-by"
+app.set 'port', process.env.PORT or nconf.get 'app:port'
+app.disable 'x-powered-by'
 
 
 # Set view engine
-app.set "views", __dirname + "/views"
-app.set "view engine", "jade"
+app.set 'views', __dirname + '/views'
+app.set 'view engine', 'jade'
 
 # Include static files
-app.use express.static __dirname + "/public/build"
+app.use express.static __dirname + '/public/build'
 
 
 # Set up middleware
@@ -57,7 +57,7 @@ app.use session nconf.get 'app:session'
 
 
 # Use passport authentication
-logger.debug "Initializing passport authentication"
+logger.debug 'Initializing passport authentication'
 app.use passport.initialize()
 app.use passport.session()
 

@@ -10,7 +10,7 @@ auth   = require '../../lib/auth'
 
 User   = require '../../models/user'
 
-passport.use new GoogleStrategy nconf.get("oauth").strategy,
+passport.use new GoogleStrategy nconf.get('oauth').strategy,
   (accessToken, refreshToken, profile, done) ->
     process.nextTick ->
       User.findOrCreate
@@ -26,10 +26,10 @@ passport.use new GoogleStrategy nconf.get("oauth").strategy,
 
       .spread (user, created) ->
         if created
-          logger.info "%s (%s) signed in as a new user",
+          logger.info '%s (%s) signed in as a new user',
             user.fullName, user.email
         else
-          logger.info "%s (%s) signed in as a returning user",
+          logger.info '%s (%s) signed in as a returning user',
             user.fullName, user.email
 
         return done null, user

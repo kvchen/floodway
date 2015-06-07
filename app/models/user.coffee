@@ -20,6 +20,6 @@ User = sequelize.define 'User',
 ,
   getterMethods:
     fullName: ->
-      return this.firstName + ' ' + this.lastName
+      return "#{this.firstName} #{this.lastName}"
 
 module.exports = User
