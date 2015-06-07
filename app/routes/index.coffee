@@ -1,8 +1,8 @@
 express = require 'express'
 
 viewRouter	= require './views'
-oauthRouter	= require './oauth'
-apiRouter	= require './api'
+authRouter	= require './auth'
+apiRouter	  = require './api'
 
 
 router = express.Router()
@@ -10,7 +10,7 @@ router = express.Router()
 
 # Use other routers
 router.use '/', viewRouter
-router.use '/', oauthRouter
+router.use '/', authRouter
 router.use '/api', apiRouter
 
 

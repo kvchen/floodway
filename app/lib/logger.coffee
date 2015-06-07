@@ -1,3 +1,4 @@
+nconf   = require 'nconf'
 winston = require 'winston'
 
 logger = new winston.Logger
@@ -8,7 +9,8 @@ logger = new winston.Logger
       json: false
       colorize: true
       timestamp: true
-    , new winston.transports.DailyRotateFile
+    ,
+    new winston.transports.DailyRotateFile
       level: 'debug'
       handleExceptions: true
       filename: 'outfile.log'

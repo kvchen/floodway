@@ -6,10 +6,9 @@ logger = require './logger'
 config = nconf.get 'database'
 testEnv = nconf.get('NODE_ENV') is 'test'
 
-if testEnv
-  database = config.name.test
-else
-  database = config.name.prod
+
+# Choose the correct database depending on the environment
+database = if testEnv then config.name.test else config.name.prod
 
 sequelize = new Sequelize database, config.username, config.password,
   dialect: 'postgres'

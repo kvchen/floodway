@@ -2,7 +2,7 @@ express  = require 'express'
 nconf    = require 'nconf'
 passport = require 'passport'
 
-GoogleStrategy = require('passport-google-oauth2').Strategy
+GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 
 logger = require '../../lib/logger'
 util   = require '../../lib/util'
@@ -10,7 +10,9 @@ auth   = require '../../lib/auth'
 
 User   = require '../../models/user'
 
-passport.use new GoogleStrategy nconf.get('oauth').strategy,
+config = nconf.get 'auth'
+
+passport.use new GoogleStrategy config.strategy.google,
   (accessToken, refreshToken, profile, done) ->
     process.nextTick ->
       User.findOrCreate
@@ -38,17 +40,6 @@ passport.use new GoogleStrategy nconf.get('oauth').strategy,
         return done err
 
 
-# Set up the HTTP bearer token strategy
-# passport.use new BearerStrategy (token, done) ->
-#   User.findOne where:
-#     token: token
-#   , (err, user) ->
-#     return done err if err
-#     return done null, false if not user
-#     return done null, user,
-#       scope: 'all'
-
-
 # Define user-specific authentication methods
 passport.serializeUser (user, done) ->
   done null, user.id
@@ -62,18 +53,17 @@ passport.deserializeUser (id, done) ->
     done err
 
 
-oAuthRouter = express.Router()
-oAuthRouter.get '/login', passport.authenticate 'google',
-  nconf.get('oauth').auth
+authRouter = express.Router()
+authRouter.get '/login', passport.authenticate 'google', config.auth
 
-oAuthRouter.get '/login/callback', passport.authenticate 'google',
+authRouter.get '/login/callback', passport.authenticate 'google',
   successRedirect: '/'
   failureRedirect: '/'
 
-oAuthRouter.get '/logout', (req, res) ->
+authRouter.get '/logout', (req, res) ->
   req.logout()
   res.redirect '/'
 
-module.exports = oAuthRouter
+module.exports = authRouter
 
 

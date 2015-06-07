@@ -40,7 +40,7 @@
     "joi": "^6.4.3",
     "nconf": "^0.7.1",
     "passport": "^0.2.2",
-    "passport-google-oauth2": "^0.1.6",
+    "passport-google-oauth": "^0.2.0",
     "passport-http-bearer": "^1.0.1",
     "pg": "^4.3.0",
     "pg-hstore": "^2.3.2",
