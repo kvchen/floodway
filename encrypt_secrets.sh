@@ -1,7 +1,7 @@
 declare -a SECRETS=(
 	"app/config/app.coffee"
 	"app/config/database.coffee"
-	"app/config/oauth.coffee"
+	"app/config/auth.coffee"
 )
 
 tar cjf secrets.tar "${SECRETS[@]}"
