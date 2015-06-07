@@ -1,9 +1,9 @@
-router = require('express').Router()
+apiRouter = require('express').Router()
 
-request = require '../request'
+requestRouter = require './request'
 
 
-router.use '/requests', requestRouter
+apiRouter.use '/requests', requestRouter
 
 
 
