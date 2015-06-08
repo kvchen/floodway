@@ -3,7 +3,6 @@ Joi     = require 'joi'
 
 Request = require '../../models/request'
 
-
 requestRouter = express.Router()
 
 requestRouter.get '/show/:id', (req, res, next) ->
@@ -13,9 +12,9 @@ requestRouter.get '/show/:id', (req, res, next) ->
   .error (err) ->
     next err
 
-# requestRouter.post '/create', (req, res, next) ->
-#   Request.build
-#     req.params.
+requestRouter.post '/create', (req, res, next) ->
+  Request.build
+    test: req.body.test
 
 requestRouter.post '/destroy/:id', (req, res, next) ->
   Request.findById req.params.id

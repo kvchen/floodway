@@ -12,10 +12,11 @@ Request = sequelize.define 'Requests',
   startedAt: Sequelize.DATE
   completedAt: Sequelize.DATE
 
-  rating:
-    type: Sequelize.ENUM
-    values: ['good', 'bad']
   feedback: Sequelize.TEXT
+  rating:
+    type: Sequelize.INTEGER
+    min: 1
+    max: 5
   state:
     type: Sequelize.ENUM
     values: ['pending', 'active', 'completed', 'cancelled']
